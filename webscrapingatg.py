@@ -1,10 +1,10 @@
-from selenium import webdriver
-import time
+from selenium import webdriver    #Selenium WebDriver is an automated testing framework used for the validation of websites (and web applications)
+import time						  #The selenium package is used to automate web browser interaction from Python.
 import lxml
-from bs4 import BeautifulSoup
-#from bs4.diagnose import diagnose
+from bs4 import BeautifulSoup     #Beautiful Soup is a Python library for pulling data out of HTML and XML files.
+#from bs4.diagnose import diagnose#Web Scraping with Beautiful Soup.
 
-url = "https://www.atg.se/andelsspel?sort=ranking"
+#url = "https://www.atg.se/andelsspel?sort=ranking"
 
 webdriver = webdriver.Chrome()
 webdriver.get(url)

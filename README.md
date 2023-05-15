@@ -4,5 +4,12 @@ Programmering och skriptning, del 1 - Python (PSPy)
 Projektarbete
 
 projektdefinition
-from selenium import webdriver
-from bs4 import BeautifulSoup
+
+from bs4 import BeautifulSoup	#Beautiful Soup is a Python library for pulling data out of HTML and XML files.
+				#Web Scraping with Beautiful Soup.
+
+
+bibliotek 	svårighetsgrad 1 	svårighetsgrad 2 	svårighetsgrad 3
+BeautifulSoup	tanka ner websidor	läs av en hemsida som	läs av en hemsida och redovisa 
+					du hittat på nätet och 	data från hemsidan med en grafisk mojäng
+					spara filen på JSON
