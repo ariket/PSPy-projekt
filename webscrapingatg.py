@@ -5,26 +5,26 @@ from bs4 import BeautifulSoup   #Beautiful Soup is a Python library for pulling 
 import time
 import csv
 
-url = "https://www.atg.se/spel/2023-05-20/V75/gavle"
+url = "https://www.atg.se/spel/V75/"
+#url = "https://www.atg.se/spel/2023-05-20/V75/gavle"
 driver = webdriver.Chrome()
 driver.get(url)
 time.sleep(3)
 
 i = 0
 x = 0
-while i < 9:
+while i < 9:     #Scroll down to bottom of webpage to be able to scrape all data
     time.sleep(1)
     driver.execute_script(f"window.scrollTo(0, {x})")
     i +=1
     x +=500
     print(i)    
 
-htmlRaw = BeautifulSoup(driver.page_source,'html.parser')
+htmlRaw = BeautifulSoup(driver.page_source,'html.parser') #Load whole webpage to htmlRaw
 
-with open('test.csv' ,"w", newline='',encoding="utf8") as D2:
+with open('test.csv' ,"w", newline='',encoding="utf8") as D2: #Save all data to a file
     out = csv.writer(D2) 
     for row in htmlRaw:
         out.writerow(row)
 
-#driver.quit()
-#input()
+driver.quit()
