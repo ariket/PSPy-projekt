@@ -19,13 +19,13 @@ class Horse:
         self.v75percent = V75percent
         
 def ScrapeSorting():        
-    X=0
+    row=0
     list = [] #Holds all relevant data, unsorted, 
 #Only use line 903 from file, the line starts with: ""/></div><span class=""MuiTouchRipple-root horse-w0pj6f""></span></button><div style=""position: relative;""""
     with open('temp.csv','r',encoding="utf8") as f:
         for line in f:
-            X += 1
-            if X == 903:
+            row += 1
+            if row == 903:
                 for blocks in line.split("""class=""horse-name css-2oi2tb-horseview-styles--horseName"">"""):  
                     list.append(blocks)
     list.pop(0) #delete first item in list, no useful data
@@ -37,10 +37,12 @@ def ScrapeSorting():
         name = post.replace("<span>", "</span>").split("</span>")
         if name[2][44:58] == "changed-driver":  #special handle if coachdriver are changed
             name[2] = name[2][85:]
-            name[2].split(""""">""")
+            special = name[2].split(""""">""")
             name[4] = name[3]
-            name[3] = name[2][1]
+            name[3] = special[1]
         odds = name[4].replace("</td><td","""-col"">""").split("""-col"">""")
+        if odds[4] == "EJ":                 #Drawn horse
+            name[0] = "STRUKEN-" + name[0]    
         horse.append(Horse(name[0],race, name[3],startnumber ,odds[4], odds[2]))
 
         head = post.split("startlist-button-leg-")
@@ -64,7 +66,7 @@ def ScrapeAtg():
 
     i = 0
     x = 0
-    while i < 9:     #Scroll down to bottom of webpage to be able to scrape all data
+    while i < 10:     #Scroll down to bottom of webpage to be able to scrape all data
         time.sleep(1)
         driver.execute_script(f"window.scrollTo(0, {x})")
         i +=1
@@ -102,7 +104,7 @@ def VisaTkinter():           #Tkinter functionality copied from https://python-f
     style = ttk.Style()
     style.theme_use("clam")
     style.configure("Treeview", background="#c7c7c7", foreground="black", rowheight=25,fieldbackground="#a1a1a1")
-    style.map("Treeview", background=[('selected','green')])
+    style.map("Treeview", background=[('selected','blue')])
  
     tree_scroll = Scrollbar(tree_frame) #Frame para el scrollbar del arbol
     tree_scroll.pack(side=RIGHT, fill=Y)
@@ -118,11 +120,11 @@ def VisaTkinter():           #Tkinter functionality copied from https://python-f
 
     #column
     json_tree.column("#0", width=0, minwidth=0)#Columna Fantasma
-    json_tree.column("Lopp", anchor="w", width=120)
-    json_tree.column("Startnummer", anchor="w", width=120)
-    json_tree.column("Hästnamn", anchor="w", width=120)
-    json_tree.column("Kusk", anchor="w", width=120)
-    json_tree.column("V75 % spelad", anchor="w", width=120)
+    json_tree.column("Lopp", anchor="w", width=40)
+    json_tree.column("Startnummer", anchor="w", width=80)
+    json_tree.column("Hästnamn", anchor="w", width=160)
+    json_tree.column("Kusk", anchor="w", width=140)
+    json_tree.column("V75 % spelad", anchor="w", width=100)
  
     #headings
     json_tree.heading("#0", text="", anchor="w")#Columna Fantasma
@@ -183,14 +185,24 @@ def VisaTkinter():           #Tkinter functionality copied from https://python-f
     select_btn = tk.Button(frame2, text="Välj", command=select_record)
     select_btn.pack(ipadx=30,)
 
-    window.mainloop()   
-  
+    def on_get_index_clicked():
+    # Get the selected index
+        selected_iid = json_tree.focus()
+        item_index = json_tree.index(selected_iid)
+        item_details = json_tree.item(selected_iid)
+        print(item_details.get("values")[2])
+
+    go_btn = tk.Button(frame1, text="Horse info", command=on_get_index_clicked)
+    go_btn.pack(ipadx=30,)
+
+    window.mainloop()
 
 def Help():
     print("-----------------------------------------------")
     print("<skrapa>         - Skrapa en Websida  ")
     print("<sortera>        - Sorterar ut intressant data från det skrapade")
-    print("<sluta>          - för att sluta  ")
+    print("<visa>           - Visar sorterad data")
+    print("<sluta>          - För att sluta  ")
     print("-----------------------------------------------")
 
 while(True):
@@ -203,8 +215,8 @@ while(True):
         VisaTkinter()    
     elif command[0] == "hjälp":
         Help()
-    elif command[0] == "ny":
-        pass 
+    elif command[0] == "xx":
+        print("\033[1;31m This text is red \033[0m\n")
     elif command[0] == "sluta" or command[0] == "quit" or command[0] == "q" or command[0] == "x":
         break
     else:
