@@ -1,5 +1,6 @@
 from selenium import webdriver  #Selenium driver is an automated testing framework used for the validation of websites (and web applications)
                                 #The selenium package is used to automate web browser interaction from Python.
+from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup   #Beautiful Soup is a Python library for pulling data out of HTML and XML files.
                                 #Web Scraping with Beautiful Soup.
 import time
@@ -21,7 +22,8 @@ class Horse:
 def ScrapeSorting():        
     row=0
     list = [] #Holds all relevant data, unsorted, 
-#Only use line 903 from file, the line starts with: ""/></div><span class=""MuiTouchRipple-root horse-w0pj6f""></span></button><div style=""position: relative;""""
+#Only uses the line starts with: ""/></div><span class=""MuiTouchRipple-root horse-w0pj6f""></span></button><div style=""position: relative;""""
+#This line is line 903 for the moment, if that changes the code must also be changed at "if row == 903:" 
     with open('temp.csv','r',encoding="utf8") as f:
         for line in f:
             row += 1
@@ -55,12 +57,16 @@ def ScrapeSorting():
             pass  
     with open('data.json','w',encoding="utf8") as jsf:     #Save all useful data to json file
         json.dump([obj.__dict__ for obj in horse], jsf, indent=4)        
+    print("\nSorteringen är nu genomförd\n")
 
 def ScrapeAtg():
     print("Nu börjar skrapningen av atg.se/spel/V75")
     url = "https://www.atg.se/spel/V75/"
     #url = "https://www.atg.se/spel/2023-05-20/V75/gavle"
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome()  #NYI user may not have Chrome installed 
+    #driver = webdriver.Edge() #Try this if you only have edge installed on your computer
+    #driver = webdriver.Firefox() #Try this if you only have firefox installed on your computer
+
     driver.get(url)
     time.sleep(3)
 
@@ -186,11 +192,19 @@ def VisaTkinter():           #Tkinter functionality copied from https://python-f
     select_btn.pack(ipadx=30,)
 
     def on_get_index_clicked():
-    # Get the selected index
         selected_iid = json_tree.focus()
-        item_index = json_tree.index(selected_iid)
+        #item_index = json_tree.index(selected_iid)
         item_details = json_tree.item(selected_iid)
         print(item_details.get("values")[2])
+        driver = webdriver.Chrome()            #NYI user may not have Chrome installed
+        #driver = webdriver.Edge() #Try this if you only have edge installed on your computer
+        #driver = webdriver.Firefox() #Try this if you only have firefox installed on your computer
+        driver.get("https://www.breedly.com/search-horse")
+        putinfo = driver.find_element(By.ID,"react-select-horse-search-input")
+        putinfo.click()
+        putinfo.send_keys(item_details.get("values")[2])
+        putinfo.click()
+        time.sleep(20)
 
     go_btn = tk.Button(frame1, text="Horse info", command=on_get_index_clicked)
     go_btn.pack(ipadx=30,)
