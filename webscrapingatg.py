@@ -13,24 +13,61 @@ import tkinter as tk
 import random
 
 class Horse:
-    def __init__(self, Name , Race = 0, Coachman = "", Startnumber = "", Odds = 0, V75percent = 0):
-        self.name = Name
-        self.race = Race
-        self.coachman = Coachman
-        self.startnumber = Startnumber
-        self.odds = Odds
-        self.v75percent = V75percent
-
+    def __init__(self, name , race = 0, coachman = "", startnumber = "", odds = 0, v75percent = 0):
+        self.name = name
+        self.race = race
+        self.coachman = coachman
+        self.startnumber = startnumber
+        self.odds = odds
+        self.v75percent = v75percent
+    def replace(self,new):        
+        self.name = new.name
+        self.race = new.race
+        self.coachman = new.coachman
+        self.startnumber = new.startnumber
+        self.odds = new.odds
+        self.v75percent = new.v75percent
+        
+        
 def AriBoy():  #My own HarryBoy 108: 2,2,3,3,3
-    R1 = R2 = R3 = R4 = R5 = R6 = R7 = []
+    R1 = [];R2 = [];R3 = [];R4 = [];R5 = [];R6 = [];R7 = []
+    FavHourse1 = Horse("TEMP1"); FavHourse2 = Horse("TEMP2"); FavHourse3 = Horse("TEMP3")
+    
     with open('data.json') as data_file:    
-        data = json.load(data_file)
+        data = json.load(data_file)    
     for h in data:
+        if FavHourse1.v75percent < h["v75percent"]:  #pick out the 3 Horses with highest v75percent
+            FavHourse3.replace(FavHourse2)
+            FavHourse2.replace(FavHourse1)
+            FavHourse1 = Horse(**h)
+        elif FavHourse2.v75percent < h["v75percent"]:
+            FavHourse3.replace(FavHourse2)
+            FavHourse2 = Horse(**h)
+        elif FavHourse3.v75percent < h["v75percent"]:
+            FavHourse3 = Horse(**h)
+        else:
+            pass
         if int(h['race']) == 1:
-            R1.append(h)
+            R1.append(Horse(**h))
+        if int(h['race']) == 2:
+            R2.append(Horse(**h))
+        if int(h['race']) == 3:
+            R3.append(Horse(**h))
+        if int(h['race']) == 4:
+            R4.append(Horse(**h))
+        if int(h['race']) == 5:
+            R5.append(Horse(**h))
+        if int(h['race']) == 6:
+            R6.append(Horse(**h))
+        if int(h['race']) == 7:
+            R7.append(Horse(**h))    
+            
     R = random.randint(5, 15)
     print("Random number between 5 and 15 is % s" % (R))
-    print(R1[10])    
+    print(R4[4].name)   
+
+
+
 def ScrapeSorting():        
     row=0 ; rightrow = False
     list = [] #Holds all relevant data, unsorted, 
@@ -59,7 +96,8 @@ def ScrapeSorting():
         odds = name[4].replace("</td><td","""-col"">""").split("""-col"">""")
         if odds[4] == "EJ":                 #Drawn horse
             name[0] = "STRUKEN-" + name[0]    
-        horse.append(Horse(name[0],race, name[3],startnumber ,odds[4], odds[2]))
+        odds[2] = odds[2][:-1]
+        horse.append(Horse(name[0],race, name[3],startnumber ,odds[4], int(odds[2])))
 
         head = post.split("startlist-button-leg-")
         try:
@@ -187,7 +225,7 @@ def VisaTkinter():           #Tkinter functionality copied from https://python-f
                 if kusk_lb.get() == record['coachman']:
                     json_tree.insert(parent='', index="end", values=(record['race'],record['startnumber'],record['name'],record['coachman'],record['v75percent']), tags=('pars',))     
             elif v75_p_spelad_lb.get():
-                if int(v75_p_spelad_lb.get()) <= int(record['v75percent'][:-1]):
+                if int(v75_p_spelad_lb.get()) <= int(record['v75percent']):
                     json_tree.insert(parent='', index="end", values=(record['race'],record['startnumber'],record['name'],record['coachman'],record['v75percent']), tags=('pars',))     
             else:
                 json_tree.insert(parent='', index="end", values=(record['race'],record['startnumber'],record['name'],record['coachman'],record['v75percent']), tags=('par',)) 
