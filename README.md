@@ -3,7 +3,7 @@
 Programmering och skriptning, del 1 - Python (PSPy)
 Projektarbete
 
-projektdefinition
+projektdefinition: Webscraping, alltså hämta("stjäla"/kopiera) data från en hemsida. Jag kommer ge mig på ATG.se i detta projekt.
 
 from bs4 import BeautifulSoup	#Beautiful Soup is a Python library for pulling data out of HTML and XML files.
 				#Web Scraping with Beautiful Soup.

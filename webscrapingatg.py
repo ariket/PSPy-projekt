@@ -1,3 +1,4 @@
+#Webscraping app. Used for extracting data from websites, this program will fetch data from ATG.se
 from selenium import webdriver  #Selenium driver is an automated testing framework used for the validation of websites (and web applications)
                                 #The selenium package is used to automate web browser interaction from Python.
 from selenium.webdriver.common.by import By
@@ -9,6 +10,7 @@ import json
 from tkinter import ttk
 from tkinter import *
 import tkinter as tk
+import random
 
 class Horse:
     def __init__(self, Name , Race = 0, Coachman = "", Startnumber = "", Odds = 0, V75percent = 0):
@@ -18,16 +20,28 @@ class Horse:
         self.startnumber = Startnumber
         self.odds = Odds
         self.v75percent = V75percent
-        
+
+def AriBoy():  #My own HarryBoy 108: 2,2,3,3,3
+    R1 = R2 = R3 = R4 = R5 = R6 = R7 = []
+    with open('data.json') as data_file:    
+        data = json.load(data_file)
+    for h in data:
+        if int(h['race']) == 1:
+            R1.append(h)
+    R = random.randint(5, 15)
+    print("Random number between 5 and 15 is % s" % (R))
+    print(R1[10])    
 def ScrapeSorting():        
-    row=0
+    row=0 ; rightrow = False
     list = [] #Holds all relevant data, unsorted, 
 #Only uses the line starts with: ""/></div><span class=""MuiTouchRipple-root horse-w0pj6f""></span></button><div style=""position: relative;""""
 #This line is line 903 for the moment, if that changes the code must also be changed at "if row == 903:" 
     with open('temp.csv','r',encoding="utf8") as f:
         for line in f:
             row += 1
-            if row == 903:
+            #if row == 903:
+            if line[10:64] == """/></div><span class=""MuiTouchRipple-root horse-w0pj6f""": 
+                rightrow = True   #print("Hittade rätt rad")
                 for blocks in line.split("""class=""horse-name css-2oi2tb-horseview-styles--horseName"">"""):  
                     list.append(blocks)
     list.pop(0) #delete first item in list, no useful data
@@ -57,7 +71,10 @@ def ScrapeSorting():
             pass  
     with open('data.json','w',encoding="utf8") as jsf:     #Save all useful data to json file
         json.dump([obj.__dict__ for obj in horse], jsf, indent=4)        
-    print("\nSorteringen är nu genomförd\n")
+    if True:
+        print("\nSorteringen är nu genomförd\n")
+    else:
+        print("\nSorteringen har troligen misslyckats, kontrollera i koden(rad 32) att programmet hittar rätt rad\n")
 
 def ScrapeAtg():
     print("Nu börjar skrapningen av atg.se/spel/V75")
@@ -66,12 +83,10 @@ def ScrapeAtg():
     driver = webdriver.Chrome()  #NYI user may not have Chrome installed 
     #driver = webdriver.Edge() #Try this if you only have edge installed on your computer
     #driver = webdriver.Firefox() #Try this if you only have firefox installed on your computer
-
     driver.get(url)
     time.sleep(3)
 
-    i = 0
-    x = 0
+    x = 0 ; i = 0
     while i < 10:     #Scroll down to bottom of webpage to be able to scrape all data
         time.sleep(1)
         driver.execute_script(f"window.scrollTo(0, {x})")
@@ -80,14 +95,13 @@ def ScrapeAtg():
         print(i)    
 
     htmlRaw = BeautifulSoup(driver.page_source,'html.parser') #Load whole webpage to htmlRaw
-
     with open('temp.csv' ,"w", newline='',encoding="utf8") as D2: #Save all data to a file
         out = csv.writer(D2) 
         for row in htmlRaw:
             out.writerow(row)
     driver.quit()
     print("Skrapningen av atg.se/spel/V75 är nu slutförd\n")
-    print("Allt verkar ha gått bra\n")
+    print("Allt verkar ha gått bra\n") #NYI gör kontroll att allt verkligen gått bra
     
 def VisaTkinter():           #Tkinter functionality copied from https://python-forum.io/thread-39230.html
     window = tk.Tk()
@@ -100,21 +114,19 @@ def VisaTkinter():           #Tkinter functionality copied from https://python-f
     frame2 = tk.Frame(window, bg="light sky blue", height=300, width=700)
     frame2.grid(row=2, column=0)
  
-    frame_entry = tk.Frame(frame2) #Frame para los entry
+    frame_entry = tk.Frame(frame2) 
     frame_entry.pack(pady=20)
- 
-    tree_frame = tk.Frame(frame1) #Frame para el arbol
+    tree_frame = tk.Frame(frame1) 
     tree_frame.pack(pady=20)
  
-    #style del tree
     style = ttk.Style()
     style.theme_use("clam")
     style.configure("Treeview", background="#c7c7c7", foreground="black", rowheight=25,fieldbackground="#a1a1a1")
     style.map("Treeview", background=[('selected','blue')])
  
-    tree_scroll = Scrollbar(tree_frame) #Frame para el scrollbar del arbol
+    tree_scroll = Scrollbar(tree_frame) 
     tree_scroll.pack(side=RIGHT, fill=Y)
-    #Lista Treeview
+    #List Treeview
     json_tree = ttk.Treeview(tree_frame, yscrollcommand=tree_scroll.set)
     json_tree.pack()
  
@@ -123,8 +135,6 @@ def VisaTkinter():           #Tkinter functionality copied from https://python-f
  
     #column
     json_tree['column'] = ("Lopp", "Startnummer", "Hästnamn", "Kusk", "V75 % spelad")
-
-    #column
     json_tree.column("#0", width=0, minwidth=0)#Columna Fantasma
     json_tree.column("Lopp", anchor="w", width=40)
     json_tree.column("Startnummer", anchor="w", width=80)
@@ -146,7 +156,6 @@ def VisaTkinter():           #Tkinter functionality copied from https://python-f
 
     with open('data.json', "r",encoding="utf8") as f:
         data = json.load(f)
- 
         for record in data:
             json_tree.insert(parent='', index="end", values=(record['race'],record['startnumber'],record['name'],record['coachman'],record['v75percent']), tags=('par',)) 
  
@@ -165,8 +174,6 @@ def VisaTkinter():           #Tkinter functionality copied from https://python-f
     l4.grid(row=0, column=2,)
     v75_p_spelad_lb = Entry(frame_entry)
     v75_p_spelad_lb.grid(row=1, column=2)
-
-
 
     def select_record():
         for row in json_tree.get_children():
@@ -229,8 +236,9 @@ while(True):
         VisaTkinter()    
     elif command[0] == "hjälp":
         Help()
-    elif command[0] == "xx":
-        print("\033[1;31m This text is red \033[0m\n")
+    elif command[0] == "AB":  #Secret command
+        print("\033[1;31m AriBoy \033[0m\n")
+        AriBoy()
     elif command[0] == "sluta" or command[0] == "quit" or command[0] == "q" or command[0] == "x":
         break
     else:
