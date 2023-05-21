@@ -11,6 +11,7 @@ from tkinter import ttk
 from tkinter import *
 import tkinter as tk
 import random
+from enum import Enum
 
 class Horse:
     def __init__(self, name , race = 0, coachman = "", startnumber = "", odds = 0, v75percent = 0):
@@ -27,13 +28,33 @@ class Horse:
         self.startnumber = new.startnumber
         self.odds = new.odds
         self.v75percent = new.v75percent
-        
-        
-def AriBoy():  #My own HarryBoy 108: 2,2,3,3,3
+
+class numOfHourses(Enum): #Number of hourses per race with AriBoy 108
+    oneHorse = 2
+    TwoHorses = 2
+    Threehorses = 3
+
+def choseHorse(R):
+    delete = True
+    while delete:
+        numb = random.randint(1,15)
+        for h in R:
+            if int(h.startnumber) == numb:
+                R.remove(h)
+                delete = False
+                break
+
+def sortHorse(num,R):
+    while len(R) > num:
+            choseHorse(R)
+            print(len(R))
+           
+#My own HarryBoy 108, number of horses to chose: 1,1,2,2,3,3,3         
+def AriBoy():  
     R1 = [];R2 = [];R3 = [];R4 = [];R5 = [];R6 = [];R7 = []
     FavHourse1 = Horse("TEMP1"); FavHourse2 = Horse("TEMP2"); FavHourse3 = Horse("TEMP3")
     
-    with open('data.json') as data_file:    
+    with open('data.json',encoding="utf8") as data_file:    
         data = json.load(data_file)    
     for h in data:
         if FavHourse1.v75percent < h["v75percent"]:  #pick out the 3 Horses with highest v75percent
@@ -47,29 +68,42 @@ def AriBoy():  #My own HarryBoy 108: 2,2,3,3,3
             FavHourse3 = Horse(**h)
         else:
             pass
-        if int(h['race']) == 1:
+        if int(h['race']) == 1 and h["v75percent"] > 5:
             R1.append(Horse(**h))
-        if int(h['race']) == 2:
+        if int(h['race']) == 2 and h["v75percent"] > 5:
             R2.append(Horse(**h))
-        if int(h['race']) == 3:
+        if int(h['race']) == 3 and h["v75percent"] > 5:
             R3.append(Horse(**h))
-        if int(h['race']) == 4:
+        if int(h['race']) == 4 and h["v75percent"] > 4:
             R4.append(Horse(**h))
-        if int(h['race']) == 5:
+        if int(h['race']) == 5 and h["v75percent"] > 3: 
             R5.append(Horse(**h))
-        if int(h['race']) == 6:
+        if int(h['race']) == 6 and h["v75percent"] > 5:
             R6.append(Horse(**h))
-        if int(h['race']) == 7:
+        if int(h['race']) == 7 and h["v75percent"] > 4:
             R7.append(Horse(**h))    
-            
-    R = random.randint(5, 15)
-    print("Random number between 5 and 15 is % s" % (R))
-    print(R4[4].name)   
+    
+  #  i = 0
+  #  while i < 8:        
+  #      spik = random.randint(1,3)
+  #      if spik == 1:
+  #          pass
+    num1 = 0; num2 = 0; num3 = 0
+    while num1 < 1:
+        
+        num = random.randint(1,3)         
+        if num == 1:
+            num1 += 1
+            if num1 <= numOfHourses.oneHorse.value:
+                sortHorse(1,R7)
+                print(num1)
+    print(R7)
+      
 
 
 
 def ScrapeSorting():        
-    row=0 ; rightrow = False
+    row=0 ; rightRow = False
     list = [] #Holds all relevant data, unsorted, 
 #Only uses the line starts with: ""/></div><span class=""MuiTouchRipple-root horse-w0pj6f""></span></button><div style=""position: relative;""""
 #This line is line 903 for the moment, if that changes the code must also be changed at "if row == 903:" 
@@ -78,7 +112,7 @@ def ScrapeSorting():
             row += 1
             #if row == 903:
             if line[10:64] == """/></div><span class=""MuiTouchRipple-root horse-w0pj6f""": 
-                rightrow = True   #print("Hittade rätt rad")
+                rightRow = True   #print("Hittade rätt rad")
                 for blocks in line.split("""class=""horse-name css-2oi2tb-horseview-styles--horseName"">"""):  
                     list.append(blocks)
     list.pop(0) #delete first item in list, no useful data
@@ -109,7 +143,7 @@ def ScrapeSorting():
             pass  
     with open('data.json','w',encoding="utf8") as jsf:     #Save all useful data to json file
         json.dump([obj.__dict__ for obj in horse], jsf, indent=4)        
-    if True:
+    if rightRow:
         print("\nSorteringen är nu genomförd\n")
     else:
         print("\nSorteringen har troligen misslyckats, kontrollera i koden(rad 32) att programmet hittar rätt rad\n")
