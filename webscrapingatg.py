@@ -12,7 +12,8 @@ from tkinter import *
 import tkinter as tk
 import random
 from enum import Enum
-
+import operator
+#TODO ändra startnumber till int?
 class Horse:
     def __init__(self, name , race = 0, coachman = "", startnumber = "", odds = 0, v75percent = 0):
         self.name = name
@@ -29,31 +30,65 @@ class Horse:
         self.odds = new.odds
         self.v75percent = new.v75percent
 
-class numOfHourses(Enum): #Number of hourses per race with AriBoy 108
+class NumOfHourses(Enum): #Number of hourses per race with AriBoy 108
     oneHorse = 2
-    TwoHorses = 2
-    Threehorses = 3
+    twoHorses = 2
+    threeHorses = 3
 
-def choseHorse(R):
-    delete = True
-    while delete:
-        numb = random.randint(1,15)
-        for h in R:
-            if int(h.startnumber) == numb:
-                R.remove(h)
-                delete = False
-                break
-
-def sortHorse(num,R):
-    while len(R) > num:
-            choseHorse(R)
-            print(len(R))
-           
-#My own HarryBoy 108, number of horses to chose: 1,1,2,2,3,3,3         
-def AriBoy():  
-    R1 = [];R2 = [];R3 = [];R4 = [];R5 = [];R6 = [];R7 = []
+#My own HarryBoy 108, number of horses to chose a raceday: 1,1,2,2,3,3,3         
+def AriBoy():        
+    R1 = [];R2 = [];R3 = [];R4 = [];R5 = [];R6 = [];R7 = []; RR =[]
     FavHourse1 = Horse("TEMP1"); FavHourse2 = Horse("TEMP2"); FavHourse3 = Horse("TEMP3")
-    
+
+    def PrintHorse(R):
+        for h in R:
+            print(f"{h.startnumber}  {h.name} ")
+
+    def SortHorse(num,R):
+        while len(R) > num:      
+            delete = True
+            while delete:
+                numb = random.randint(1,15)
+                for h in R:
+                    if int(h.startnumber) == numb:
+                        numbb = random.randint(1,10)
+                        if h.v75percent > 19 and numbb < 4: #30 % random chance
+                            R.remove(h)
+                            delete = False
+                            break
+                        elif h.v75percent > 14 and numbb < 5: #40 % random chance
+                            R.remove(h)
+                            delete = False
+                            break
+                        elif h.v75percent > 8 and numbb < 6: #50 % random chance
+                            R.remove(h)
+                            delete = False
+                            break
+                        elif h.v75percent <= 8 and numbb < 8: #70 % random chance
+                            R.remove(h)
+                            delete = False
+                            break
+                        
+    def FavHourse(RR):
+        RR.sort(reverse=True,key=operator.attrgetter("v75percent"))
+        for h in RR:
+            if FavHourse1.race == h.race:
+                num = random.randint(1,8)
+                if num < 8:   #88% random possibility
+                    h.replace(FavHourse1)
+                break
+            elif FavHourse2.race == h.race:
+                num = random.randint(1,5)
+                if num < 5:   #80% random possibility
+                    h.replace(FavHourse2)
+                break
+            elif FavHourse3.race == h.race:
+                num = random.randint(1,4)
+                if num < 4:   #75% random possibility
+                    h.replace(FavHourse3)    
+                break
+        RR.sort(reverse=False,key=operator.attrgetter("startnumber"))
+        
     with open('data.json',encoding="utf8") as data_file:    
         data = json.load(data_file)    
     for h in data:
@@ -68,40 +103,80 @@ def AriBoy():
             FavHourse3 = Horse(**h)
         else:
             pass
-        if int(h['race']) == 1 and h["v75percent"] > 5:
+        if int(h['race']) == 1 and h["v75percent"] > 5:  #pick out horsese that are palyed over this percent
             R1.append(Horse(**h))
-        if int(h['race']) == 2 and h["v75percent"] > 5:
+        if int(h['race']) == 2 and h["v75percent"] > 4:
             R2.append(Horse(**h))
         if int(h['race']) == 3 and h["v75percent"] > 5:
             R3.append(Horse(**h))
         if int(h['race']) == 4 and h["v75percent"] > 4:
             R4.append(Horse(**h))
-        if int(h['race']) == 5 and h["v75percent"] > 3: 
+        if int(h['race']) == 5 and h["v75percent"] > 2: 
             R5.append(Horse(**h))
         if int(h['race']) == 6 and h["v75percent"] > 5:
             R6.append(Horse(**h))
         if int(h['race']) == 7 and h["v75percent"] > 4:
             R7.append(Horse(**h))    
     
-  #  i = 0
-  #  while i < 8:        
-  #      spik = random.randint(1,3)
-  #      if spik == 1:
-  #          pass
-    num1 = 0; num2 = 0; num3 = 0
-    while num1 < 1:
+    num1 = 0; num2 = 0; num3 = 0 ; numRR = 1
+    RR = R1 ; rowSorted = False
+    while numRR < 8:
+        if rowSorted:
+            rowSorted = False
+            numRR += 1  
+            if numRR == 2:
+                R1 = RR
+                RR = R2
+            elif numRR == 3:
+                R2 = RR 
+                RR = R3    
+            elif numRR == 4:
+                R3 = RR
+                RR = R4
+            elif numRR == 5:
+                R4 = RR
+                RR = R5     
+            elif numRR == 6:
+                R5 = RR
+                RR = R6
+            elif numRR == 7:
+                R6 = RR
+                RR = R7        
         
         num = random.randint(1,3)         
-        if num == 1:
+        if num == 1 and num1 < NumOfHourses.oneHorse.value:
             num1 += 1
-            if num1 <= numOfHourses.oneHorse.value:
-                sortHorse(1,R7)
-                print(num1)
-    print(R7)
-      
+            SortHorse(1,RR)
+            FavHourse(RR)
+            rowSorted = True
+        elif num == 2 and num2 < NumOfHourses.twoHorses.value:
+            num2 += 1
+            SortHorse(2,RR)
+            FavHourse(RR)
+            rowSorted = True
+        else:
+            if num3 < NumOfHourses.threeHorses.value:
+                num3 += 1
+                SortHorse(3,RR)
+                FavHourse(RR)
+                rowSorted = True
 
-
-
+    
+    PrintHorse(R1)
+    print("----")
+    PrintHorse(R2)
+    print("----")
+    PrintHorse(R3)
+    print("----")
+    PrintHorse(R4)
+    print("----")
+    PrintHorse(R5)
+    print("----")
+    PrintHorse(R6)
+    print("----")
+    PrintHorse(R7)
+    print("----")
+    
 def ScrapeSorting():        
     row=0 ; rightRow = False
     list = [] #Holds all relevant data, unsorted, 
@@ -146,10 +221,10 @@ def ScrapeSorting():
     if rightRow:
         print("\nSorteringen är nu genomförd\n")
     else:
-        print("\nSorteringen har troligen misslyckats, kontrollera i koden(rad 32) att programmet hittar rätt rad\n")
+        print("\nSorteringen har troligen misslyckats, kontrollera i koden(rad 189) att programmet hittar rätt rad\n")
 
 def ScrapeAtg():
-    print("Nu börjar skrapningen av atg.se/spel/V75")
+    print("Nu börjar skrapningen av atg.se/spel/V75 \n Avvakta, det tar ca 15 sekunder....")
     url = "https://www.atg.se/spel/V75/"
     #url = "https://www.atg.se/spel/2023-05-20/V75/gavle"
     driver = webdriver.Chrome()  #NYI user may not have Chrome installed 
@@ -175,7 +250,7 @@ def ScrapeAtg():
     print("Skrapningen av atg.se/spel/V75 är nu slutförd\n")
     print("Allt verkar ha gått bra\n") #NYI gör kontroll att allt verkligen gått bra
     
-def VisaTkinter():           #Tkinter functionality copied from https://python-forum.io/thread-39230.html
+def ShowTkinter():           #Tkinter functionality copied from https://python-forum.io/thread-39230.html
     window = tk.Tk()
     window.title("V75 på lördag")
     window.geometry("650x500")
@@ -247,7 +322,7 @@ def VisaTkinter():           #Tkinter functionality copied from https://python-f
     v75_p_spelad_lb = Entry(frame_entry)
     v75_p_spelad_lb.grid(row=1, column=2)
 
-    def select_record():
+    def SelectRecord():
         for row in json_tree.get_children():
             json_tree.delete(row)
  
@@ -267,25 +342,30 @@ def VisaTkinter():           #Tkinter functionality copied from https://python-f
         kusk_lb.delete(0,END)
         v75_p_spelad_lb.delete(0,END)
         
-    select_btn = tk.Button(frame2, text="Välj", command=select_record)
+    select_btn = tk.Button(frame2, text="Välj", command=SelectRecord)
     select_btn.pack(ipadx=30,)
 
-    def on_get_index_clicked():
-        selected_iid = json_tree.focus()
-        #item_index = json_tree.index(selected_iid)
-        item_details = json_tree.item(selected_iid)
-        print(item_details.get("values")[2])
+    def OpenClicked():
+        #item_index = json_tree.index(json_tree.focus())
+        item_details = json_tree.item(json_tree.focus())
+        #values = item_details.get("values")
+        values = item_details.get("values")
+        del values[0] ; del values[0]; del values[1]; del values[1]
+        print(f"Öppnar info om {values}\n Sidan stängs automatiskt efter 20 sekunder")
+        #print(values[2])
+        #print(item_details.get("values")[2])
         driver = webdriver.Chrome()            #NYI user may not have Chrome installed
         #driver = webdriver.Edge() #Try this if you only have edge installed on your computer
         #driver = webdriver.Firefox() #Try this if you only have firefox installed on your computer
         driver.get("https://www.breedly.com/search-horse")
         putinfo = driver.find_element(By.ID,"react-select-horse-search-input")
         putinfo.click()
-        putinfo.send_keys(item_details.get("values")[2])
+        putinfo.send_keys(values)
+        #putinfo.send_keys(item_details.get("values")[2])
         putinfo.click()
         time.sleep(20)
 
-    go_btn = tk.Button(frame1, text="Horse info", command=on_get_index_clicked)
+    go_btn = tk.Button(frame1, text="Horse info", command=OpenClicked)
     go_btn.pack(ipadx=30,)
 
     window.mainloop()
@@ -305,10 +385,10 @@ while(True):
     elif command[0] == "sortera":
         ScrapeSorting()
     elif command[0] == "visa":
-        VisaTkinter()    
+        ShowTkinter()    
     elif command[0] == "hjälp":
         Help()
-    elif command[0] == "AB":  #Secret command
+    elif command[0] == "AB" or command[0] == "ab" :  #Secret command
         print("\033[1;31m AriBoy \033[0m\n")
         AriBoy()
     elif command[0] == "sluta" or command[0] == "quit" or command[0] == "q" or command[0] == "x":
