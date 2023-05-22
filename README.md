@@ -16,7 +16,6 @@ man måste då kommentera bort "driver = webdriver.Chrome()" och istället aktiv
 
 
 
-
 bibliotek 	svårighetsgrad 1 	svårighetsgrad 2 	svårighetsgrad 3
 BeautifulSoup	tanka ner websidor	läs av en hemsida som	läs av en hemsida och redovisa 
 & webdriver				du hittat på nätet och 	data från hemsidan med tkinter
