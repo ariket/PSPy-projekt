@@ -1,6 +1,6 @@
 # PSPy-projekt
 
-Programmering och skriptning, del 1 - Python (PSPy)
+Programmering och skriptning, del 1 - Python (PSPy).
 Projektarbete
 
 projektdefinition: Webscraping, alltså hämta("stjäla"/kopiera) data från en hemsida. Jag kommer ge mig på ATG.se i detta projekt.

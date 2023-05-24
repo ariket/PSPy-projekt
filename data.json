@@ -3,535 +3,535 @@
         "name": "Filippa B.J.",
         "race": 1,
         "coachman": "Jorma Kontio",
-        "startnumber": "1",
-        "odds": "9,34",
-        "v75percent": 10
+        "startnumber": 1,
+        "odds": "11,34",
+        "v75percent": 6
     },
     {
         "name": "Racing Brodda",
         "race": 1,
         "coachman": "Magnus A Djuse",
-        "startnumber": "2",
-        "odds": "99,99",
-        "v75percent": 4
+        "startnumber": 2,
+        "odds": "15,04",
+        "v75percent": 2
     },
     {
         "name": "Imhatra Am",
         "race": 1,
         "coachman": "Mats E Djuse",
-        "startnumber": "3",
-        "odds": "99,99",
-        "v75percent": 16
+        "startnumber": 3,
+        "odds": "8,98",
+        "v75percent": 30
     },
     {
         "name": "A Perfect Dutchess",
         "race": 1,
         "coachman": "Magnus Teien Gundersen",
-        "startnumber": "4",
-        "odds": "99,99",
-        "v75percent": 8
+        "startnumber": 4,
+        "odds": "45,50",
+        "v75percent": 3
     },
     {
         "name": "Zeudi Amg",
         "race": 1,
         "coachman": "Alessandro Gocciadoro",
-        "startnumber": "5",
-        "odds": "4,66",
+        "startnumber": 5,
+        "odds": "2,78",
         "v75percent": 22
     },
     {
         "name": "Call Me Brodda",
         "race": 1,
         "coachman": "Stefan Persson",
-        "startnumber": "6",
-        "odds": "99,99",
-        "v75percent": 3
+        "startnumber": 6,
+        "odds": "2,43",
+        "v75percent": 1
     },
     {
-        "name": "Heliade du Goutier",
+        "name": "STRUKEN-Heliade du Goutier",
         "race": 1,
         "coachman": "Gabriele Gelormini",
-        "startnumber": "7",
-        "odds": "99,99",
-        "v75percent": 5
+        "startnumber": 7,
+        "odds": "EJ",
+        "v75percent": 7
     },
     {
-        "name": "Dear Friend",
+        "name": "STRUKEN-Dear Friend",
         "race": 1,
         "coachman": "Bj\u00f6rn Goop",
-        "startnumber": "8",
-        "odds": "1,87",
-        "v75percent": 2
+        "startnumber": 8,
+        "odds": "EJ",
+        "v75percent": 1
     },
     {
         "name": "Riet Hazelaar",
         "race": 1,
         "coachman": "Dexter Dunn",
-        "startnumber": "9",
-        "odds": "99,99",
-        "v75percent": 8
+        "startnumber": 9,
+        "odds": "28,37",
+        "v75percent": 2
     },
     {
         "name": "Sister Sledge",
         "race": 1,
         "coachman": "\u00d6rjan Kihlstr\u00f6m",
-        "startnumber": "10",
-        "odds": "3,11",
-        "v75percent": 23
+        "startnumber": 10,
+        "odds": "11,78",
+        "v75percent": 26
     },
     {
         "name": "Ultra Violet",
         "race": 2,
         "coachman": "Andr\u00e9 Eklundh",
-        "startnumber": "1",
-        "odds": "99,99",
-        "v75percent": 22
+        "startnumber": 1,
+        "odds": "2,95",
+        "v75percent": 39
     },
     {
         "name": "Kit Crown",
         "race": 2,
         "coachman": "Ulf Ohlsson",
-        "startnumber": "2",
-        "odds": "99,99",
-        "v75percent": 11
+        "startnumber": 2,
+        "odds": "22,45",
+        "v75percent": 13
     },
     {
         "name": "Waytocashflow",
         "race": 2,
         "coachman": "Lars Anvar Kolle",
-        "startnumber": "3",
-        "odds": "99,99",
-        "v75percent": 4
+        "startnumber": 3,
+        "odds": "18,99",
+        "v75percent": 2
     },
     {
         "name": "Ballerina Indika",
         "race": 2,
         "coachman": "\u00c5ke Svanstedt",
-        "startnumber": "4",
-        "odds": "5,56",
-        "v75percent": 4
+        "startnumber": 4,
+        "odds": "23,83",
+        "v75percent": 3
     },
     {
         "name": "Roubine",
         "race": 2,
         "coachman": "Bj\u00f6rn Goop",
-        "startnumber": "5",
-        "odds": "5,56",
-        "v75percent": 2
+        "startnumber": 5,
+        "odds": "4,55",
+        "v75percent": 3
     },
     {
         "name": "Pam Trot",
         "race": 2,
         "coachman": "Giuseppe Lubrano",
-        "startnumber": "6",
-        "odds": "24,58",
-        "v75percent": 8
+        "startnumber": 6,
+        "odds": "99,99",
+        "v75percent": 2
     },
     {
         "name": "Toscana Southwind",
         "race": 2,
         "coachman": "Troels Andersen",
-        "startnumber": "7",
-        "odds": "99,99",
-        "v75percent": 5
+        "startnumber": 7,
+        "odds": "32,28",
+        "v75percent": 3
     },
     {
         "name": "Future Sox",
         "race": 2,
         "coachman": "J\u00f6rgen S Eriksson",
-        "startnumber": "8",
-        "odds": "99,99",
+        "startnumber": 8,
+        "odds": "57,74",
         "v75percent": 2
     },
     {
         "name": "Classy Knox",
         "race": 2,
         "coachman": "Stefan Persson",
-        "startnumber": "9",
+        "startnumber": 9,
         "odds": "99,99",
-        "v75percent": 2
+        "v75percent": 1
     },
     {
         "name": "Queen",
         "race": 2,
         "coachman": "Carl Johan Jepson",
-        "startnumber": "10",
-        "odds": "99,99",
+        "startnumber": 10,
+        "odds": "79,25",
         "v75percent": 1
     },
     {
         "name": "Marabou Brodda",
         "race": 2,
         "coachman": "Thomas Uhrberg",
-        "startnumber": "11",
-        "odds": "24,58",
-        "v75percent": 21
+        "startnumber": 11,
+        "odds": "33,54",
+        "v75percent": 16
     },
     {
         "name": "Precious Lane",
         "race": 2,
         "coachman": "Johan Untersteiner",
-        "startnumber": "12",
+        "startnumber": 12,
         "odds": "99,99",
-        "v75percent": 3
+        "v75percent": 1
     },
     {
         "name": "Vilja T.Y.C.",
         "race": 2,
         "coachman": "\u00d6rjan Kihlstr\u00f6m",
-        "startnumber": "13",
-        "odds": "55,70",
+        "startnumber": 13,
+        "odds": "7,93",
         "v75percent": 7
     },
     {
         "name": "Infinity Sisu",
         "race": 2,
         "coachman": "Oskar J Andersson",
-        "startnumber": "14",
-        "odds": "1,85",
+        "startnumber": 14,
+        "odds": "5,87",
         "v75percent": 5
     },
     {
         "name": "Devs Daffodil",
         "race": 2,
         "coachman": "Conrad Lugauer",
-        "startnumber": "15",
-        "odds": "5,56",
-        "v75percent": 3
+        "startnumber": 15,
+        "odds": "12,80",
+        "v75percent": 2
     },
     {
         "name": "Friend of Elves",
         "race": 3,
         "coachman": "Magnus A Djuse",
-        "startnumber": "1",
-        "odds": "99,99",
-        "v75percent": 21
+        "startnumber": 1,
+        "odds": "2,72",
+        "v75percent": 28
     },
     {
         "name": "Heartbeat Thunder",
         "race": 3,
         "coachman": "Mats E Djuse",
-        "startnumber": "2",
-        "odds": "99,99",
-        "v75percent": 10
+        "startnumber": 2,
+        "odds": "4,43",
+        "v75percent": 12
     },
     {
         "name": "Hipster K.",
         "race": 3,
         "coachman": "Linda Sedstr\u00f6m",
-        "startnumber": "3",
-        "odds": "99,99",
-        "v75percent": 11
+        "startnumber": 3,
+        "odds": "4,63",
+        "v75percent": 12
     },
     {
         "name": "Lincoln Abe Boko",
         "race": 3,
         "coachman": "Hans Crebas",
-        "startnumber": "4",
+        "startnumber": 4,
         "odds": "99,99",
-        "v75percent": 2
+        "v75percent": 1
     },
     {
         "name": "Match'em",
         "race": 3,
         "coachman": "Ulf Ohlsson",
-        "startnumber": "5",
-        "odds": "99,99",
-        "v75percent": 3
+        "startnumber": 5,
+        "odds": "13,62",
+        "v75percent": 1
     },
     {
         "name": "Keystone Cash",
         "race": 3,
         "coachman": "Bo Westergaard",
-        "startnumber": "6",
-        "odds": "99,99",
+        "startnumber": 6,
+        "odds": "10,43",
         "v75percent": 4
     },
     {
         "name": "Precious Thing",
         "race": 3,
         "coachman": "J\u00f6rgen S Eriksson",
-        "startnumber": "7",
-        "odds": "99,99",
+        "startnumber": 7,
+        "odds": "21,52",
         "v75percent": 1
     },
     {
         "name": "Dragons Bar",
         "race": 3,
         "coachman": "Alessandro Gocciadoro",
-        "startnumber": "8",
-        "odds": "99,99",
-        "v75percent": 19
+        "startnumber": 8,
+        "odds": "18,33",
+        "v75percent": 30
     },
     {
         "name": "Kingslayer Pellini",
         "race": 3,
         "coachman": "Daniel W\u00e4jersten",
-        "startnumber": "9",
-        "odds": "1,00",
-        "v75percent": 7
+        "startnumber": 9,
+        "odds": "81,37",
+        "v75percent": 3
     },
     {
         "name": "Majah B.",
         "race": 3,
         "coachman": "Svein O Wassberg",
-        "startnumber": "10",
+        "startnumber": 10,
         "odds": "99,99",
-        "v75percent": 11
+        "v75percent": 4
     },
     {
         "name": "Demon",
         "race": 3,
         "coachman": "Carl Johan Jepson",
-        "startnumber": "11",
-        "odds": "99,99",
-        "v75percent": 7
+        "startnumber": 11,
+        "odds": "47,10",
+        "v75percent": 2
     },
     {
         "name": "El Vego Khalifa",
         "race": 3,
         "coachman": "Stefan Persson",
-        "startnumber": "12",
-        "odds": "99,99",
-        "v75percent": 3
+        "startnumber": 12,
+        "odds": "18,02",
+        "v75percent": 2
     },
     {
         "name": "Working Class Hero",
         "race": 4,
         "coachman": "Gabriele Gelormini",
-        "startnumber": "1",
+        "startnumber": 1,
         "odds": "99,99",
-        "v75percent": 16
+        "v75percent": 10
     },
     {
         "name": "Smile Silvio",
         "race": 4,
         "coachman": "Peter Untersteiner",
-        "startnumber": "2",
-        "odds": "13,60",
-        "v75percent": 17
+        "startnumber": 2,
+        "odds": "6,47",
+        "v75percent": 28
     },
     {
         "name": "Jackpot",
         "race": 4,
         "coachman": "\u00d6rjan Kihlstr\u00f6m",
-        "startnumber": "3",
-        "odds": "99,99",
-        "v75percent": 16
+        "startnumber": 3,
+        "odds": "21,77",
+        "v75percent": 14
     },
     {
         "name": "Kaxig In",
         "race": 4,
         "coachman": "Johan Untersteiner",
-        "startnumber": "4",
+        "startnumber": 4,
         "odds": "99,99",
-        "v75percent": 3
+        "v75percent": 1
     },
     {
         "name": "Oligark Tooma",
         "race": 4,
         "coachman": "Mika Forss",
-        "startnumber": "5",
-        "odds": "99,99",
-        "v75percent": 5
+        "startnumber": 5,
+        "odds": "7,08",
+        "v75percent": 2
     },
     {
         "name": "Sir Express",
         "race": 4,
         "coachman": "Stefan Persson",
-        "startnumber": "6",
-        "odds": "99,99",
+        "startnumber": 6,
+        "odds": "2,57",
         "v75percent": 5
     },
     {
         "name": "Peter Pan",
         "race": 4,
         "coachman": "Bj\u00f6rn Goop",
-        "startnumber": "7",
-        "odds": "2,09",
-        "v75percent": 13
+        "startnumber": 7,
+        "odds": "27,31",
+        "v75percent": 8
     },
     {
-        "name": "Generalen D.K.",
+        "name": "STRUKEN-Generalen D.K.",
         "race": 4,
         "coachman": "Bo Westergaard",
-        "startnumber": "8",
-        "odds": "99,99",
-        "v75percent": 5
+        "startnumber": 8,
+        "odds": "EJ",
+        "v75percent": 3
     },
     {
         "name": "Mellby Imperial",
         "race": 4,
         "coachman": "Magnus A Djuse",
-        "startnumber": "9",
-        "odds": "6,80",
-        "v75percent": 14
+        "startnumber": 9,
+        "odds": "3,77",
+        "v75percent": 20
     },
     {
         "name": "Pure Attack",
         "race": 4,
         "coachman": "\u00c5ke Svanstedt",
-        "startnumber": "10",
-        "odds": "2,50",
-        "v75percent": 2
+        "startnumber": 10,
+        "odds": "7,79",
+        "v75percent": 3
     },
     {
         "name": "Patrick Palema",
         "race": 4,
         "coachman": "Erlend Rennesvik",
-        "startnumber": "11",
-        "odds": "12,54",
-        "v75percent": 2
+        "startnumber": 11,
+        "odds": "99,99",
+        "v75percent": 3
     },
     {
         "name": "Email",
         "race": 4,
         "coachman": "Dwight Pieters",
-        "startnumber": "12",
+        "startnumber": 12,
         "odds": "99,99",
-        "v75percent": 2
+        "v75percent": 1
     },
     {
         "name": "Twigs Honor",
         "race": 5,
         "coachman": "Bj\u00f6rn Goop",
-        "startnumber": "1",
-        "odds": "3,28",
-        "v75percent": 3
+        "startnumber": 1,
+        "odds": "19,52",
+        "v75percent": 2
     },
     {
         "name": "Draupner",
         "race": 5,
         "coachman": "Jesper Rydberg",
-        "startnumber": "2",
-        "odds": "1,64",
-        "v75percent": 3
+        "startnumber": 2,
+        "odds": "8,60",
+        "v75percent": 1
     },
     {
         "name": "Es Trenc",
         "race": 5,
         "coachman": "Olav Mikkelborg",
-        "startnumber": "3",
+        "startnumber": 3,
         "odds": "99,99",
-        "v75percent": 3
+        "v75percent": 1
     },
     {
         "name": "Castor the Star",
         "race": 5,
         "coachman": "Mats E Djuse",
-        "startnumber": "4",
-        "odds": "15,58",
-        "v75percent": 39
+        "startnumber": 4,
+        "odds": "2,05",
+        "v75percent": 66
     },
     {
         "name": "Laredo Boko",
         "race": 5,
         "coachman": "Robert Bergh",
-        "startnumber": "5",
-        "odds": "99,99",
-        "v75percent": 21
+        "startnumber": 5,
+        "odds": "16,15",
+        "v75percent": 12
     },
     {
         "name": "Inspiration",
         "race": 5,
         "coachman": "Joakim L\u00f6vgren",
-        "startnumber": "6",
-        "odds": "99,99",
-        "v75percent": 2
+        "startnumber": 6,
+        "odds": "10,10",
+        "v75percent": 1
     },
     {
         "name": "Heroine Darling",
         "race": 5,
         "coachman": "Stefan Persson",
-        "startnumber": "7",
-        "odds": "15,58",
-        "v75percent": 7
+        "startnumber": 7,
+        "odds": "47,23",
+        "v75percent": 2
     },
     {
         "name": "So Far Away \u00c5s",
         "race": 5,
         "coachman": "Kenneth Haugstad",
-        "startnumber": "8",
+        "startnumber": 8,
         "odds": "99,99",
-        "v75percent": 1
+        "v75percent": 0
     },
     {
         "name": "Yuvaraj",
         "race": 5,
         "coachman": "Gustav Johansson",
-        "startnumber": "9",
-        "odds": "99,99",
-        "v75percent": 8
+        "startnumber": 9,
+        "odds": "4,16",
+        "v75percent": 7
     },
     {
         "name": "Global Concept",
         "race": 5,
         "coachman": "\u00d6rjan Kihlstr\u00f6m",
-        "startnumber": "10",
-        "odds": "99,99",
-        "v75percent": 10
+        "startnumber": 10,
+        "odds": "20,89",
+        "v75percent": 7
     },
     {
         "name": "Comes with Age",
         "race": 5,
         "coachman": "Magnus Jakobsson",
-        "startnumber": "11",
-        "odds": "99,99",
-        "v75percent": 1
+        "startnumber": 11,
+        "odds": "57,88",
+        "v75percent": 0
     },
     {
         "name": "Maybach W.F.",
         "race": 5,
         "coachman": "Erik Adielsson",
-        "startnumber": "12",
-        "odds": "7,43",
-        "v75percent": 3
+        "startnumber": 12,
+        "odds": "56,81",
+        "v75percent": 1
     },
     {
         "name": "Karat River",
         "race": 6,
         "coachman": "Johan Untersteiner",
-        "startnumber": "1",
-        "odds": "99,99",
-        "v75percent": 33
+        "startnumber": 1,
+        "odds": "31,99",
+        "v75percent": 23
     },
     {
         "name": "Readly Lavec",
         "race": 6,
         "coachman": "Oskar J Andersson",
-        "startnumber": "2",
-        "odds": "99,99",
-        "v75percent": 17
+        "startnumber": 2,
+        "odds": "28,44",
+        "v75percent": 27
     },
     {
         "name": "L.L.Royal",
         "race": 6,
         "coachman": "Robert Bergh",
-        "startnumber": "3",
+        "startnumber": 3,
         "odds": "99,99",
-        "v75percent": 4
+        "v75percent": 1
     },
     {
         "name": "L.A.Boko",
         "race": 6,
         "coachman": "Daniel W\u00e4jersten",
-        "startnumber": "4",
-        "odds": "1,00",
-        "v75percent": 9
+        "startnumber": 4,
+        "odds": "1,72",
+        "v75percent": 11
     },
     {
         "name": "Behind Bars",
         "race": 6,
         "coachman": "Stefan Persson",
-        "startnumber": "5",
-        "odds": "91,60",
-        "v75percent": 4
+        "startnumber": 5,
+        "odds": "46,25",
+        "v75percent": 2
     },
     {
         "name": "Souvenir d'Inverne",
         "race": 6,
         "coachman": "Hannu Torvinen",
-        "startnumber": "6",
+        "startnumber": 6,
         "odds": "99,99",
         "v75percent": 1
     },
@@ -539,168 +539,168 @@
         "name": "Frodo S.",
         "race": 6,
         "coachman": "Bj\u00f6rn Goop",
-        "startnumber": "7",
-        "odds": "99,99",
+        "startnumber": 7,
+        "odds": "64,01",
         "v75percent": 2
     },
     {
         "name": "King of Everything",
         "race": 6,
         "coachman": "Magnus A Djuse",
-        "startnumber": "8",
-        "odds": "99,99",
-        "v75percent": 9
+        "startnumber": 8,
+        "odds": "3,53",
+        "v75percent": 11
     },
     {
         "name": "Hipster Am",
         "race": 6,
         "coachman": "Erik Adielsson",
-        "startnumber": "9",
-        "odds": "37,06",
-        "v75percent": 4
+        "startnumber": 9,
+        "odds": "20,78",
+        "v75percent": 6
     },
     {
         "name": "Xanthis Coktail",
         "race": 6,
         "coachman": "Rikard N Skoglund",
-        "startnumber": "10",
-        "odds": "99,99",
-        "v75percent": 4
+        "startnumber": 10,
+        "odds": "64,83",
+        "v75percent": 1
     },
     {
         "name": "King Schermer",
         "race": 6,
         "coachman": "Michel F Rothengatter",
-        "startnumber": "11",
-        "odds": "99,99",
-        "v75percent": 10
+        "startnumber": 11,
+        "odds": "53,66",
+        "v75percent": 11
     },
     {
         "name": "Falcon Eye",
         "race": 6,
         "coachman": "Peter Untersteiner",
-        "startnumber": "12",
-        "odds": "23,16",
+        "startnumber": 12,
+        "odds": "8,52",
         "v75percent": 3
     },
     {
         "name": "Boli You S.M.",
         "race": 7,
         "coachman": "Adrian Kolgjini",
-        "startnumber": "1",
-        "odds": "99,99",
-        "v75percent": 4
+        "startnumber": 1,
+        "odds": "25,55",
+        "v75percent": 2
     },
     {
         "name": "Imperatur Am",
         "race": 7,
         "coachman": "Magnus Teien Gundersen",
-        "startnumber": "2",
-        "odds": "99,99",
-        "v75percent": 11
+        "startnumber": 2,
+        "odds": "20,85",
+        "v75percent": 9
     },
     {
         "name": "Versace Face",
         "race": 7,
         "coachman": "\u00d6rjan Kihlstr\u00f6m",
-        "startnumber": "3",
-        "odds": "99,99",
-        "v75percent": 6
+        "startnumber": 3,
+        "odds": "16,09",
+        "v75percent": 11
     },
     {
         "name": "High on Pepper",
         "race": 7,
         "coachman": "Jorma Kontio",
-        "startnumber": "4",
-        "odds": "99,99",
-        "v75percent": 15
+        "startnumber": 4,
+        "odds": "17,73",
+        "v75percent": 12
     },
     {
         "name": "Velten Swarovski",
         "race": 7,
         "coachman": "Erik Adielsson",
-        "startnumber": "5",
-        "odds": "4,61",
-        "v75percent": 2
+        "startnumber": 5,
+        "odds": "34,17",
+        "v75percent": 1
     },
     {
         "name": "Global Beware",
         "race": 7,
         "coachman": "Tapio Perttunen",
-        "startnumber": "6",
+        "startnumber": 6,
         "odds": "99,99",
-        "v75percent": 5
+        "v75percent": 3
     },
     {
         "name": "Gasolin",
         "race": 7,
         "coachman": "J\u00f6rgen Sjunnesson",
-        "startnumber": "7",
-        "odds": "99,99",
-        "v75percent": 2
+        "startnumber": 7,
+        "odds": "5,82",
+        "v75percent": 1
     },
     {
         "name": "Kentucky River",
         "race": 7,
         "coachman": "Per Nordstr\u00f6m",
-        "startnumber": "8",
-        "odds": "1,89",
-        "v75percent": 18
+        "startnumber": 8,
+        "odds": "9,14",
+        "v75percent": 29
     },
     {
         "name": "Calle Crown",
         "race": 7,
         "coachman": "Ken Ecce",
-        "startnumber": "9",
-        "odds": "99,99",
-        "v75percent": 5
+        "startnumber": 9,
+        "odds": "5,45",
+        "v75percent": 4
     },
     {
         "name": "Aetos Kronos",
         "race": 7,
         "coachman": "Santtu Raitala",
-        "startnumber": "10",
-        "odds": "99,99",
+        "startnumber": 10,
+        "odds": "8,54",
         "v75percent": 4
     },
     {
         "name": "Eric the Eel",
         "race": 7,
         "coachman": "Magnus A Djuse",
-        "startnumber": "11",
-        "odds": "18,48",
-        "v75percent": 4
+        "startnumber": 11,
+        "odds": "11,53",
+        "v75percent": 3
     },
     {
         "name": "Power",
         "race": 7,
         "coachman": "Robert Bergh",
-        "startnumber": "12",
-        "odds": "18,48",
-        "v75percent": 4
+        "startnumber": 12,
+        "odds": "61,44",
+        "v75percent": 2
     },
     {
         "name": "Fakir de Mahey",
         "race": 7,
         "coachman": "Mathieu Mottier",
-        "startnumber": "13",
-        "odds": "99,99",
-        "v75percent": 4
+        "startnumber": 13,
+        "odds": "13,74",
+        "v75percent": 3
     },
     {
         "name": "Hatchet Man",
         "race": 7,
         "coachman": "Charles-Antoine Mary",
-        "startnumber": "14",
+        "startnumber": 14,
         "odds": "99,99",
-        "v75percent": 5
+        "v75percent": 2
     },
     {
         "name": "Moni Viking",
         "race": 7,
         "coachman": "Bj\u00f6rn Goop",
-        "startnumber": "15",
-        "odds": "3,07",
-        "v75percent": 13
+        "startnumber": 15,
+        "odds": "5,72",
+        "v75percent": 14
     }
 ]

@@ -13,9 +13,9 @@ import tkinter as tk
 import random
 from enum import Enum
 import operator
-#TODO ändra startnumber till int?
+
 class Horse:
-    def __init__(self, name , race = 0, coachman = "", startnumber = "", odds = 0, v75percent = 0):
+    def __init__(self, name , race = 0, coachman = "", startnumber = 0 , odds = 0, v75percent = 0):
         self.name = name
         self.race = race
         self.coachman = coachman
@@ -35,7 +35,7 @@ class NumOfhorses(Enum): #Number of horses per race with AriBoy 108
     twoHorses = 2
     threeHorses = 3
 
-#My own HarryBoy 108, number of horses to chose a raceday: 1,1,2,2,3,3,3         
+#My own AriBoy 108(Harry Boy), number of horses to chose for a raceday: 1,1,2,2,3,3,3         
 def AriBoy():        
     R1 = [];R2 = [];R3 = [];R4 = [];R5 = [];R6 = [];R7 = []; RR =[]
     Favhorse1 = Horse("TEMP1"); Favhorse2 = Horse("TEMP2"); Favhorse3 = Horse("TEMP3")
@@ -50,7 +50,11 @@ def AriBoy():
             while delete:
                 numb = random.randint(1,15)
                 for horse in Race:
-                    if int(horse.startnumber) == numb:
+                    if "STRUKEN-" == horse.name[:8]:
+                        Race.remove(horse)
+                        delete = False
+                        break
+                    if horse.startnumber == numb:
                         numbb = random.randint(1,10)
                         if horse.v75percent > 19 and numbb < 4: #30 % random chance
                             Race.remove(horse)
@@ -103,7 +107,7 @@ def AriBoy():
             Favhorse3 = Horse(**horse)
         else:
             pass
-        if int(horse['race']) == 1 and horse["v75percent"] > 5:  #pick out horses that are palyed over this percent
+        if int(horse['race']) == 1 and horse["v75percent"] > 5:  #only pick out horses that are palyed over this percent
             R1.append(Horse(**horse))
         if int(horse['race']) == 2 and horse["v75percent"] > 4:
             R2.append(Horse(**horse))
@@ -192,9 +196,9 @@ def ScrapeSorting():
                     list.append(blocks)
     list.pop(0) #delete first item in list, no useful data
 
-    horse = []
+    horse = [] #All horses of the weeks v75 are saved in this list.
     race = 1
-    startnumber = "1"
+    startnumb = "1"
     for post in list:    #Sorting out useful data from scraped raw-data
         name = post.replace("<span>", "</span>").split("</span>")
         if name[2][44:58] == "changed-driver":  #special handle if coachdriver are changed
@@ -206,14 +210,14 @@ def ScrapeSorting():
         if odds[4] == "EJ":                 #Drawn horse
             name[0] = "STRUKEN-" + name[0]    
         odds[2] = odds[2][:-1]
-        horse.append(Horse(name[0],race, name[3],startnumber ,odds[4], int(odds[2])))
+        horse.append(Horse(name[0], race, name[3], int(startnumb) , odds[4], int(odds[2])))
 
         head = post.split("startlist-button-leg-")
         try:
             race = int(head[1][0])
-            startnumber = head[1][8:10]
-            if startnumber[1] == "\u0022":
-                startnumber = head[1][8:9]
+            startnumb = head[1][8:10]
+            if startnumb[1] == "\u0022":
+                startnumb = head[1][8:9]
         except:
             pass  
     with open('data.json','w',encoding="utf8") as jsf:     #Save all useful data to json file
@@ -224,7 +228,7 @@ def ScrapeSorting():
         print("\nSorteringen har troligen misslyckats, kontrollera i koden(rad 189) att programmet hittar rätt rad\n")
 
 def ScrapeAtg():
-    print("Nu börjar skrapningen av atg.se/spel/V75 \n Avvakta, det tar ca 15 sekunder....")
+    print("Nu börjar skrapningen av atg.se/spel/V75 \nAvvakta, det tar ca 15 sekunder....")
     url = "https://www.atg.se/spel/V75/"
     #url = "https://www.atg.se/spel/2023-05-20/V75/gavle"
     driver = webdriver.Chrome()  #NYI user may not have Chrome installed 
@@ -259,7 +263,6 @@ def ShowTkinter():           #Tkinter functionality copied from https://python-f
     frame1.grid(row=1, column=0)
     frame2 = tk.Frame(window, bg="light sky blue", height=300, width=700)
     frame2.grid(row=2, column=0)
- 
     frame_entry = tk.Frame(frame2) 
     frame_entry.pack(pady=20)
     tree_frame = tk.Frame(frame1) 
@@ -310,7 +313,7 @@ def ShowTkinter():           #Tkinter functionality copied from https://python-f
     l1.grid(row=0, column=0)
     Lopp_lb = Entry( frame_entry)
     Lopp_lb.grid(row=1, column=0)
- 
+    
     l3 = Label( frame_entry, text="Kusk")
     l3.grid(row=0, column=1)
     kusk_lb = Entry(frame_entry)
@@ -324,7 +327,6 @@ def ShowTkinter():           #Tkinter functionality copied from https://python-f
     def SelectRecord():
         for row in json_tree.get_children():
             json_tree.delete(row)
- 
         for record in data:
             if Lopp_lb.get():
                 if int(Lopp_lb.get()) == record['race']:
@@ -339,10 +341,7 @@ def ShowTkinter():           #Tkinter functionality copied from https://python-f
                 json_tree.insert(parent='', index="end", values=(record['race'],record['startnumber'],record['name'],record['coachman'],record['v75percent']), tags=('par',)) 
         Lopp_lb.delete(0,END)
         kusk_lb.delete(0,END)
-        v75_p_spelad_lb.delete(0,END)
-        
-    select_btn = tk.Button(frame2, text="Välj", command=SelectRecord)
-    select_btn.pack(ipadx=30,)
+        v75_p_spelad_lb.delete(0,END)    
 
     def OpenClicked():
         #item_index = json_tree.index(json_tree.focus())
@@ -363,19 +362,22 @@ def ShowTkinter():           #Tkinter functionality copied from https://python-f
         #putinfo.send_keys(item_details.get("values")[2])
         putinfo.click()
         time.sleep(20)
-
+        
+    select_btn = tk.Button(frame2, text="Välj", command=SelectRecord)
+    select_btn.pack(ipadx=30,)
+    
     go_btn = tk.Button(frame1, text="Horse info", command=OpenClicked)
     go_btn.pack(ipadx=30,)
-
     window.mainloop()
 
 def Help():
-    print("-----------------------------------------------")
+    print("-----------------------------------------------------------------")
     print("<skrapa>         - Skrapa en Websida  ")
     print("<sortera>        - Sorterar ut intressant data från det skrapade")
     print("<visa>           - Visar sorterad data")
     print("<sluta>          - För att sluta  ")
-    print("-----------------------------------------------")
+    print("<ab>             - Förslag på tipsrad att lämna in för veckans v75")
+    print("------------------------------------------------------------------")
 
 while(True):
     command = input("Kommando: ").split()
@@ -387,8 +389,8 @@ while(True):
         ShowTkinter()    
     elif command[0] == "hjälp":
         Help()
-    elif command[0] == "AB" or command[0] == "ab" :  #Secret command
-        print("\033[1;31m AriBoy \033[0m\n")
+    elif command[0] == "AB" or command[0] == "ab" : 
+        print("\033[1;31m ---AriBoy--- \033[0m\n")
         AriBoy()
     elif command[0] == "sluta" or command[0] == "quit" or command[0] == "q" or command[0] == "x":
         break
